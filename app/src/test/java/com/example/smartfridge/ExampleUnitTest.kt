@@ -1,4 +1,4 @@
-package com.example.smartfridge
+package com.example.SMARTFRIDGE
 
 import org.junit.Test
 

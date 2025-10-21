@@ -1,4 +1,4 @@
-package com.example.smartfridge.ui.theme
+package com.example.SMARTFRIDGE.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
