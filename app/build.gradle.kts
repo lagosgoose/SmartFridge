@@ -3,9 +3,10 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
  // id("kotlin-ksp")
-    id("com.google.devtools.ksp")
+    id("com.google.devtools.ksp") version "2.2.10-2.0.2" // version "2.2.10-2.0.2"
 
 }
+
 
 android {
     namespace = "com.example.SMARTFRIDGE"
@@ -33,6 +34,7 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -61,14 +63,18 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
 
-    val room_version = "2.8.2"
 
-    implementation("androidx.room:room-runtime:$room_version")
+    // coreLibraryDesugaring("androidx.desugar:desugar_jdk_libs:2.0.4")
 
-    // If this project uses any Kotlin source, use Kotlin Symbol Processing (KSP)
-    // See Add the KSP plugin to your project
-    ksp("androidx.room:room-compiler:$room_version")
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
+
+
+    val roomVersion = "2.8.3"// "2.8.2" //2.6.1
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
 }
     
